@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import { Link, Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
 import { fetchMovieById } from 'api/movies';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
@@ -13,6 +13,15 @@ const MovieDetailsPage = () => {
 	const [movieDetail, setMovieDetail] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
+
+	const location = useLocation();
+	const navigate = useNavigate();
+	const prevLocationRef = useRef(location);
+
+	useEffect(() => {
+		
+		prevLocationRef.current = location;
+	}, [location]);
 
 	useEffect(() => {
 		if (!movieId) return;
@@ -45,19 +54,28 @@ const MovieDetailsPage = () => {
 		return genresOfMovie;
 	}, [movieDetail.genres]);
 
+
+	const handleGoBack = () => {
+	
+		if (prevLocationRef.current?.pathname) {
+			navigate(prevLocationRef.current.pathname);
+		} else {
+			navigate('/'); 
+		}
+	};
+
 	return (
 		<section className="container">
 			<Heading title={'Detail info'} />
 
-			<Link to='/'>
-				<button
-					className={styles.goBackBtn}
-					type='button'
-					aria-label='go to home page'
-				>
-					GoBack
-				</button>
-			</Link>
+			<button
+				className={styles.goBackBtn}
+				type='button'
+				aria-label='go to previous page'
+				onClick={handleGoBack}
+			>
+				Go Back
+			</button>
 
 			{movieId && !isLoading && (
 				<MovieDetails movieDetail={movieDetail} score={score} genres={genres} />
