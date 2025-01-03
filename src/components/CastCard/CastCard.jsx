@@ -6,21 +6,21 @@ import { useState, useEffect } from 'react';
 const CastCard = ({ data: { profile_path, name, character } }) => {
   const imageUrl = profile_path ? IMG_URL + profile_path : DEFAULT_IMG_URL;
 
-  // Логика для отслеживания загрузки изображения
+
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
-    setIsImageLoaded(true); // Изображение загружено, меняем состояние
+    setIsImageLoaded(true); 
   };
 
   return (
     <div className={styles.card}>
       <img
-        className={`${styles.avatarImg} ${isImageLoaded ? styles.loaded : ''}`} // Добавляем класс при загрузке
+        className={`${styles.avatarImg} ${isImageLoaded ? styles.loaded : ''}`}
         src={imageUrl}
         alt={`Avatar of ${name}`}
         loading="lazy"
-        onLoad={handleImageLoad} // Обработчик события загрузки изображения
+        onLoad={handleImageLoad} 
       />
 
       <div className={styles.cardContent}>
