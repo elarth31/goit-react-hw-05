@@ -1,0 +1,87 @@
+/* Стили для изображения аватара */
+.avatarImg {
+    max-width: 150px;
+    /* Картинка заполняет контейнер по высоте */
+    object-fit: cover;
+    /* Сохраняем пропорции и не растягиваем изображение */
+    border-radius: 8px;
+    /* Скругляем углы */
+    transition: opacity 0.5s ease;
+    /* Плавный переход при изменении прозрачности */
+    opacity: 0;
+    /* Скрываем изображение до полной загрузки */
+}
+
+/* Когда изображение загружено, меняем opacity на 1 */
+.avatarImg.loaded {
+    opacity: 1;
+}
+
+/* Заглушка для изображения (пока оно загружается) */
+.avatarImg::before {
+    content: '';
+    /* Псевдоэлемент для создания фона */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ddd;
+    /* Светлый серый фон для заглушки */
+    border-radius: 8px;
+    /* Скругленные углы для заглушки */
+    transition: background-color 0.3s ease;
+    /* Плавный переход фона */
+}
+
+.hr {
+    color: #fff;
+    background-color:#fff;
+    height: 2px;
+    border: none;
+    margin-top: -6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.cardContent {
+    text-align: center;
+}
+
+.cardTitle {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    text-overflow: ellipsis;
+}
+
+.cardDescription {
+    color: gray;
+    width: 250px;
+    height: 50px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    text-overflow: ellipsis;
+}
+
+.cardContent {
+    border-radius: 8px;
+    background: linear-gradient(hsl(0 0% 0% / 0),
+    hsl(20 0% 0% / 0.3) 20%,
+     hsl(0 0% 0% / 1));
+}
+
+.cardTitle::after {
+    transition: transform 500ms ease;
+}
+
+.cardTitle::after {
+    transform: scaleX(1);
+}

@@ -1,0 +1,31 @@
+.cardList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.cardItem {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.cardItem {
+    border: 1px solid #fff;
+    transition: transform 600ms ease;
+}
+
+.cardItem:hover,
+.cardItem:focus-within {
+    transform: scale(1.1);
+}
+
+.card-content {
+    background: linear-gradient(hsl(0 0% 0% / 0),
+    hsl(20 0% 0% / 0.3) 20%,
+    hsl(0 0% 0% / 1));
+}

@@ -1,0 +1,19 @@
+.title {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    text-transform: uppercase;
+}
+
+.goBackBtn {
+    margin-bottom: 20px;
+}
+
+.additionalTitle {
+    margin-top: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

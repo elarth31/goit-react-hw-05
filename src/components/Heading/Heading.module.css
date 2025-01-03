@@ -1,0 +1,19 @@
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.top {
+    margin-top: 50px;
+}
+
+.bottom {
+    margin-bottom: 50px;
+}
