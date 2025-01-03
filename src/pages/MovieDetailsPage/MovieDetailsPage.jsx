@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState, useRef } from 'react';
-import { Link, Outlet, useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { useParams, useLocation, useNavigate, Link, Outlet } from 'react-router-dom';
 import styles from './MovieDetailsPage.module.css';
 import { fetchMovieById } from 'api/movies';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
@@ -14,14 +14,10 @@ const MovieDetailsPage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [isError, setIsError] = useState(false);
 
+
 	const location = useLocation();
 	const navigate = useNavigate();
-	const prevLocationRef = useRef(location);
 
-	useEffect(() => {
-		
-		prevLocationRef.current = location;
-	}, [location]);
 
 	useEffect(() => {
 		if (!movieId) return;
@@ -41,10 +37,12 @@ const MovieDetailsPage = () => {
 		handleMovieById();
 	}, [movieId]);
 
+
 	const score = useMemo(() => {
 		if (!movieDetail.vote_average || !movieDetail.vote_count) return 0;
 		return ((movieDetail.vote_average / movieDetail.vote_count) * 100).toFixed(0);
 	}, [movieDetail.vote_average, movieDetail.vote_count]);
+
 
 	const genres = useMemo(() => {
 		if (!movieDetail.genres) return;
@@ -56,11 +54,11 @@ const MovieDetailsPage = () => {
 
 
 	const handleGoBack = () => {
-	
-		if (prevLocationRef.current?.pathname) {
-			navigate(prevLocationRef.current.pathname);
+
+		if (location.state?.from) {
+			navigate(location.state.from);
 		} else {
-			navigate('/'); 
+			navigate(-1); 
 		}
 	};
 
